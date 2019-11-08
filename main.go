@@ -50,7 +50,7 @@ func commands() {
 		url = strings.TrimRight(serverURL, "/")
 
 		t := Setting{}
-		yamlFile, err := ioutil.ReadFile("strapi-settings.yaml")
+		yamlFile, err := ioutil.ReadFile("settings.yaml")
 		if err != nil {
 			log.Printf("yamlFile.Get err #%v ", err)
 			log.Print("\n-------------------------------------\n   YAML settings file error...\n-------------------------------------\n")
