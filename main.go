@@ -18,10 +18,12 @@ import (
 var url = ""
 var version = "1.0.0"
 var app = cli.NewApp()
+var filePath string
 
 func info() {
 	app.Name = "json-to-hugo"
 	app.Usage = "Convert json content to hugo format"
+
 	app.Authors = []cli.Author{
 		cli.Author{
 			Name:  "Jan Kenith Johannessen",
@@ -37,6 +39,16 @@ func info() {
 
 func commands() {
 	// Default Command
+
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:        "file, f",
+			Value:       "",
+			Usage:       "Path to YAML File",
+			Destination: &filePath,
+		},
+	}
+
 	app.Action = func(c *cli.Context) error {
 		err := godotenv.Load()
 		if err != nil {
@@ -50,7 +62,7 @@ func commands() {
 		url = strings.TrimRight(serverURL, "/")
 
 		t := Setting{}
-		yamlFile, err := ioutil.ReadFile("settings.yaml")
+		yamlFile, err := ioutil.ReadFile(filePath)
 		if err != nil {
 			log.Printf("yamlFile.Get err #%v ", err)
 			log.Print("\n-------------------------------------\n   YAML settings file error...\n-------------------------------------\n")

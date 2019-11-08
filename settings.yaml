@@ -1,9 +1,0 @@
-tables:
-  - id: addresses
-    directory: content/addresses/
-    fileExtension: md
-    mainContent: title
-  - id: cities
-    directory: content/cities/
-    fileExtension: md
-    mainContent: title
