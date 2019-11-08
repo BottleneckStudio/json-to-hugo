@@ -1,4 +1,4 @@
-module github.com/kenkoii/strapi-hugo
+module github.com/BottleneckStudio/json-to-hugo
 
 go 1.12
 
